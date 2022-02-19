@@ -1,6 +1,6 @@
 import React from "react";
 
-const ContactsDisplay = () => {
+const ContactsDisplay = ({ userData }) => {
    return <div>ContactsDisplay</div>;
 };
 
