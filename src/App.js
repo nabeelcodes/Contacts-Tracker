@@ -3,22 +3,27 @@ import { ContactsDisplay, ContactsForm, GenericContainer, GlobalStyles, MainCont
 
 // getting values from localStorage
 const getDataFromLocalStorage = () => {
-   const dataFromLS = localStorage.getItem("ContactsList");
-   if (dataFromLS) {
+   try {
+      const dataFromLS = localStorage.getItem("ContactsList");
+      if (dataFromLS === null) {
+         return [];
+      }
+      console.log(dataFromLS, typeof dataFromLS);
       return JSON.parse(dataFromLS);
-   } else {
-      return [];
+   } catch (error) {
+      console.log(error);
    }
 };
 
 const App = () => {
    // main user contact array that gets pushed to localStorage as json
    const [contacts, setContacts] = useState(getDataFromLocalStorage());
+   console.log(`ContactsList initialized to ${contacts} ${typeof contacts}`);
 
    // run useEffect every time "contacts" array changes(new contact gets added), then push data to localStorage to update it
    useEffect(() => {
       localStorage.setItem("ContactsList", JSON.stringify(contacts));
-      console.log(contacts.length);
+      console.log("new contact added to LS");
    }, [contacts]);
 
    return (

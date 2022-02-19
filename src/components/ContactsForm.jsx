@@ -23,7 +23,7 @@ const ContactsForm = ({ userData, createUser }) => {
       const newValues = { id: uuidv4(), ...values };
       const newUserData = [...userData, newValues];
       createUser(newUserData);
-      console.log("user added");
+      console.log("new contact created");
 
       submitProps.setSubmitting(false);
       submitProps.resetForm();
