@@ -1,15 +1,29 @@
-const ContactsDisplay = ({ userData }) => {
+import { EachContact } from "./";
+import { ContactsDisplayContainer } from "./";
+
+const ContactsDisplay = ({ userData, deleteUser }) => {
    const contactsListEmpty = userData.length === 0 ? true : false;
 
    return (
-      <div>
+      <ContactsDisplayContainer>
          {contactsListEmpty && <div>No Contact added yet!</div>}
-         <div>
-            {userData.map((contact) => (
-               <p key={contact.id}>{contact.firstName}</p>
-            ))}
-         </div>
-      </div>
+         {!contactsListEmpty && (
+            <>
+               <table>
+                  <thead>
+                     <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone Number</th>
+                        <th>Delete User</th>
+                     </tr>
+                  </thead>
+                  <EachContact userData={userData} deleteUser={deleteUser} />
+               </table>
+               <button>Remove All</button>
+            </>
+         )}
+      </ContactsDisplayContainer>
    );
 };
 
