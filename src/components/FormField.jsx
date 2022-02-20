@@ -1,15 +1,13 @@
 import { ErrorMessage, Field } from "formik";
 
-const FormField = ({ type, variant, fieldLabel, placeholder }) => {
+const FormField = ({ type, variant, placeholder }) => {
    return (
       <div>
-         <label htmlFor={variant}>{fieldLabel}</label>
-         <br />
          <Field type={type} id={variant} name={variant} placeholder={placeholder} />
          <br />
-         <span>
+         <p>
             <ErrorMessage name={variant} />
-         </span>
+         </p>
       </div>
    );
 };

@@ -20,12 +20,12 @@ const App = () => {
 
    // run useEffect every time "contacts" array changes(new contact gets added), then push data to localStorage to update it
    useEffect(() => {
+      console.log(`data set to LS`);
       localStorage.setItem("ContactsList", JSON.stringify(contacts));
    }, [contacts]);
 
    // Delete a contact
    const deleteUser = (userId) => {
-      console.log(`deleteUser ran, deleted : ${userId}`);
       if (contacts) {
          const filteredContacts = contacts.filter((eachContact) => {
             return eachContact.id !== userId;
@@ -40,11 +40,11 @@ const App = () => {
          <MainContainer>
             <header>
                <Title>Contacts Tracker App</Title>
-               <p>Keep a tab on the details(name, email and phone number) of your contacts using Local Storage</p>
+               <p>Keep a tab on the details of your contacts using Local Storage</p>
             </header>
             <GenericContainer>
                <ContactsForm userData={contacts} createUser={setContacts} />
-               <ContactsDisplay userData={contacts} deleteUser={deleteUser} />
+               <ContactsDisplay userData={contacts} deleteUser={deleteUser} deleteAll={setContacts} />
             </GenericContainer>
          </MainContainer>
       </>

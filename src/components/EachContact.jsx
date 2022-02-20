@@ -6,7 +6,7 @@ const EachContact = ({ userData, deleteUser }) => {
       <tbody>
          {userData.map((user) => (
             <tr key={user.id}>
-               <td>{`${user.firstName}${user.lastName}`}</td>
+               <td>{`${user.firstName} ${user.lastName}`}</td>
                <td>{user.email}</td>
                <td>{user.phoneNumber}</td>
                <td onClick={() => deleteUser(user.id)}>

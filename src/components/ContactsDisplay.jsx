@@ -1,7 +1,7 @@
 import { EachContact } from "./";
 import { ContactsDisplayContainer } from "./";
 
-const ContactsDisplay = ({ userData, deleteUser }) => {
+const ContactsDisplay = ({ userData, deleteUser, deleteAll }) => {
    const contactsListEmpty = userData.length === 0 ? true : false;
 
    return (
@@ -20,7 +20,13 @@ const ContactsDisplay = ({ userData, deleteUser }) => {
                   </thead>
                   <EachContact userData={userData} deleteUser={deleteUser} />
                </table>
-               <button>Remove All</button>
+               <button
+                  onClick={() => {
+                     deleteAll([]);
+                  }}
+               >
+                  Remove All
+               </button>
             </>
          )}
       </ContactsDisplayContainer>

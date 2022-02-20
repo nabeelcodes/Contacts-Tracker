@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const ContactsDisplayContainer = styled.div`
    background-color: white;
    color: black;
-   border-radius: 15px;
+   border-radius: 10px;
    padding: 1.5rem;
    margin: 1rem;
    max-height: 15rem;
@@ -15,29 +15,28 @@ export const ContactsDisplayContainer = styled.div`
    }
 
    td:nth-child(4) {
+      cursor: pointer;
       color: red;
       text-align: center;
-      cursor: pointer;
-      /* border: 2px solid red; */
    }
 
    button {
+      cursor: pointer;
       width: 100%;
       margin-top: 1rem;
-      cursor: pointer;
       padding: 0.5rem 0;
-      border-radius: 15px;
-      border: none;
+      border: 2px solid rgb(255, 105, 97);
+      border-radius: 50px;
       font-size: 1rem;
       font-weight: bold;
-      background-color: #ff6961;
+      background-color: rgb(255, 105, 97);
       color: white;
-      transition: background-color 350ms linear;
-      transition: letter-spacing 350ms linear;
+      transition: background-color 350ms ease-in-out, border 350ms ease-in-out;
    }
 
    button:hover {
-      background-color: rgba(255, 105, 97, 0.9);
-      letter-spacing: 2px;
+      background-color: white;
+      color: rgba(255, 105, 97, 0.85);
+      border: 2px solid rgb(255, 105, 97);
    }
 `;
