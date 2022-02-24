@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Formik, Form } from "formik";
 import { phoneRegExp } from "../data/phoneRegExp";
 import { v4 as uuidv4 } from "uuid";
@@ -7,6 +7,9 @@ import FormField from "./FormField";
 import { FormCard } from "./";
 
 const ContactsForm = ({ userData, createUser }) => {
+   const [isData, setIsData] = useState();
+   // console.log(`isData is : ${isData}`);
+
    const initialFormValues = {
       firstName: "",
       lastName: "",
@@ -21,26 +24,30 @@ const ContactsForm = ({ userData, createUser }) => {
       phoneNumber: Yup.string().matches(phoneRegExp, "Phone number is not valid").required("Required"),
    });
 
-   let isData = userData.length < 1 ? false : true;
    useEffect(() => {
-      console.log(`useEffect ran`);
-      isData = userData.length < 1 ? false : true;
-      console.log(`isData value : ${isData}`);
+      // console.log(`useEffect ran`);
+      if (userData.length < 1) {
+         // console.log(`setting isData to false`);
+         setIsData(false);
+      } else {
+         // console.log(`setting isData to true`);
+         setIsData(true);
+      }
    }, [userData]);
 
    const checkDuplicateUser = (newUser) => {
+      let duplicate = false;
+      // console.log(`check duplicate ran`);
       if (isData === true) {
-         let duplicate = false;
-         console.log(`check duplicate ran`);
          userData.map((eachUser) => {
             if (eachUser.firstName === newUser.firstName && eachUser.lastName === newUser.lastName) {
-               console.log(`BRUH2..`);
+               // console.log(`duplicate found, aborting..`);
+               alert(`Contact already exist!`);
                duplicate = true;
             }
             return duplicate;
          });
          if (duplicate) {
-            alert(`Contact already Exists...`);
             return false;
          }
       }
@@ -48,19 +55,16 @@ const ContactsForm = ({ userData, createUser }) => {
    };
 
    const submitHandler = (values, submitProps) => {
-      console.log(`form submit ran`);
+      // console.log(`form submit ran`);
 
       if (checkDuplicateUser(values)) {
          const newValues = { id: uuidv4(), ...values };
          const newUserData = [...userData, newValues];
          createUser(newUserData);
-         console.log(`userAdded`);
-         submitProps.setSubmitting(false);
-         submitProps.resetForm();
-      } else {
-         submitProps.setSubmitting(false);
-         submitProps.resetForm();
+         // console.log(`userAdded`);
       }
+      submitProps.setSubmitting(false);
+      submitProps.resetForm();
    };
 
    return (

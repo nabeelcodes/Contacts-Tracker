@@ -6,29 +6,27 @@ const ContactsDisplay = ({ userData, deleteUser, deleteAll }) => {
 
    return (
       <ContactsDisplayContainer>
-         {contactsListEmpty && <div>No Contact added yet!</div>}
-         {!contactsListEmpty && (
-            <>
-               <table>
-                  <thead>
-                     <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Phone Number</th>
-                        <th>Delete User</th>
-                     </tr>
-                  </thead>
-                  <EachContact userData={userData} deleteUser={deleteUser} />
-               </table>
-               <button
-                  onClick={() => {
-                     deleteAll([]);
-                  }}
-               >
-                  Remove All
-               </button>
-            </>
-         )}
+         <table>
+            <thead>
+               <tr>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Phone Number</th>
+                  <th>Delete User</th>
+               </tr>
+            </thead>
+            {!contactsListEmpty && <EachContact userData={userData} deleteUser={deleteUser} />}
+         </table>
+
+         {contactsListEmpty && <p> No Contacts added yet!</p>}
+
+         <button
+            onClick={() => {
+               deleteAll([]);
+            }}
+         >
+            Remove All
+         </button>
       </ContactsDisplayContainer>
    );
 };

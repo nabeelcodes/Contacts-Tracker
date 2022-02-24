@@ -3,6 +3,7 @@ import { ContactsDisplay, ContactsForm, GenericContainer, GlobalStyles, MainCont
 
 // getting values from localStorage
 const getDataFromLocalStorage = () => {
+   // console.log(`getting data from LS...`);
    try {
       const dataFromLS = localStorage.getItem("ContactsList");
       if (dataFromLS === null) {
@@ -20,12 +21,12 @@ const App = () => {
 
    // run useEffect every time "contacts" array changes(new contact gets added), then push data to localStorage to update it
    useEffect(() => {
-      console.log(`data set to LS`);
+      // console.log(`data set to LS`);
       localStorage.setItem("ContactsList", JSON.stringify(contacts));
    }, [contacts]);
 
    // Delete a contact
-   const deleteUser = (userId) => {
+   const deleteContacts = (userId) => {
       if (contacts) {
          const filteredContacts = contacts.filter((eachContact) => {
             return eachContact.id !== userId;
@@ -44,7 +45,7 @@ const App = () => {
             </header>
             <GenericContainer>
                <ContactsForm userData={contacts} createUser={setContacts} />
-               <ContactsDisplay userData={contacts} deleteUser={deleteUser} deleteAll={setContacts} />
+               <ContactsDisplay userData={contacts} deleteUser={deleteContacts} deleteAll={setContacts} />
             </GenericContainer>
          </MainContainer>
       </>

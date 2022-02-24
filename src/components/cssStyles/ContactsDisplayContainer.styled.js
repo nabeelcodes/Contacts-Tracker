@@ -39,4 +39,9 @@ export const ContactsDisplayContainer = styled.div`
       color: rgba(255, 105, 97, 0.85);
       border: 2px solid rgb(255, 105, 97);
    }
+
+   p {
+      text-align: center;
+      padding: 0.5rem 0;
+   }
 `;
