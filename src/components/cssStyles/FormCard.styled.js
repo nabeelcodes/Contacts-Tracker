@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 export const FormCard = styled.section`
+   width: 100%;
    background-color: white;
    padding: 1.5rem;
-   margin: 0 1rem;
    border-radius: 10px;
 
    input {

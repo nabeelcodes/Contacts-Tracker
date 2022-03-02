@@ -1,13 +1,12 @@
 import styled from "styled-components";
 
 export const GenericContainer = styled.div`
-   display: flex;
-   justify-content: space-between;
-   align-items: stretch;
-   min-width: 100vw;
-   padding: 0 4rem;
+   width: 100%;
+   display: grid;
+   grid-template-columns: 1fr 3fr;
+   gap: 2rem;
 
-   @media (max-width: 990px) {
-      flex-direction: column;
+   @media (max-width: 1024px) {
+      grid-template-columns: 1fr;
    }
 `;

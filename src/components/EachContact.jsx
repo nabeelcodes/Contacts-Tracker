@@ -3,7 +3,7 @@ import { trash } from "react-icons-kit/feather/trash";
 
 const EachContact = ({ userData, deleteUser }) => {
    return (
-      <tbody>
+      <tbody className='dataBody'>
          {userData.map((user) => (
             <tr key={user.id}>
                <td>{`${user.firstName} ${user.lastName}`}</td>

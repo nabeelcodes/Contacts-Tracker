@@ -78,7 +78,7 @@ const ContactsForm = ({ userData, createUser }) => {
                      <FormField type={"email"} variant={"email"} placeholder={"Enter an email"} />
                      <FormField type={"text"} variant={"phoneNumber"} placeholder={"Enter a phone number"} />
 
-                     <StyledButton primary type='submit' disabled={!isValid || isSubmitting}>
+                     <StyledButton className='submitBtn' primary type='submit' disabled={!isValid || isSubmitting}>
                         Add Contact
                      </StyledButton>
                   </Form>

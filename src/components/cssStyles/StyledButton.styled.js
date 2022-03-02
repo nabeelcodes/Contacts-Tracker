@@ -23,4 +23,8 @@ export const StyledButton = styled.button`
          background-color: rgba(0, 168, 107, 0.2);
          border: 2px solid rgb(0, 168, 107);
       `}
+
+   &.submitBtn {
+      margin-top: 1rem;
+   }
 `;

@@ -1,31 +1,50 @@
 import styled from "styled-components";
 
 export const ContactsDisplayContainer = styled.section`
-   flex-grow: 1;
    background-color: white;
    color: black;
    border-radius: 10px;
+   display: grid;
+   grid-template-columns: 1fr;
+   align-content: space-between;
+   justify-items: center;
    padding: 1.5rem;
-   margin: 0 1rem;
+   max-height: 365px;
 
    table {
+      width: 100%;
       margin-bottom: 0.8rem;
    }
 
-   th,
-   td {
-      padding: 0.5rem 1rem;
+   thead tr {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      justify-items: center;
    }
 
-   td:nth-child(4) {
-      cursor: pointer;
-      color: red;
-      text-align: center;
+   .dataBody {
+      width: 100%;
+      height: 216px;
+      display: block;
+      margin-top: 1.5rem;
+      overflow-y: scroll;
+
+      tr {
+         display: grid;
+         grid-template-columns: repeat(4, 1fr);
+         justify-items: center;
+         margin-bottom: 1rem;
+      }
+
+      td:nth-child(4) {
+         cursor: pointer;
+         color: red;
+         text-align: center;
+      }
    }
 
    p {
-      text-align: center;
-      padding: 0.5rem 0;
-      margin-bottom: 0.8rem;
+      display: block;
    }
 `;
