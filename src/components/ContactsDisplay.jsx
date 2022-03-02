@@ -1,5 +1,4 @@
-import { EachContact } from "./";
-import { ContactsDisplayContainer } from "./";
+import { EachContact, ContactsDisplayContainer, StyledButton } from "./";
 
 const ContactsDisplay = ({ userData, deleteUser, deleteAll }) => {
    const contactsListEmpty = userData.length === 0 ? true : false;
@@ -18,15 +17,15 @@ const ContactsDisplay = ({ userData, deleteUser, deleteAll }) => {
             {!contactsListEmpty && <EachContact userData={userData} deleteUser={deleteUser} />}
          </table>
 
-         {contactsListEmpty && <p> No Contacts added yet!</p>}
+         {contactsListEmpty && <p>No Contacts added yet!</p>}
 
-         <button
+         <StyledButton
             onClick={() => {
                deleteAll([]);
             }}
          >
             Remove All
-         </button>
+         </StyledButton>
       </ContactsDisplayContainer>
    );
 };

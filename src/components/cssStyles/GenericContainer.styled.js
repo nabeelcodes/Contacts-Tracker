@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const GenericContainer = styled.div`
    display: flex;
    justify-content: space-between;
-   align-items: center;
+   align-items: stretch;
    min-width: 100vw;
    padding: 0 4rem;
 

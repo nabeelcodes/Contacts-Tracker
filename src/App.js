@@ -3,7 +3,6 @@ import { ContactsDisplay, ContactsForm, GenericContainer, GlobalStyles, MainCont
 
 // getting values from localStorage
 const getDataFromLocalStorage = () => {
-   // console.log(`getting data from LS...`);
    try {
       const dataFromLS = localStorage.getItem("ContactsList");
       if (dataFromLS === null) {
@@ -21,7 +20,6 @@ const App = () => {
 
    // run useEffect every time "contacts" array changes(new contact gets added), then push data to localStorage to update it
    useEffect(() => {
-      // console.log(`data set to LS`);
       localStorage.setItem("ContactsList", JSON.stringify(contacts));
    }, [contacts]);
 

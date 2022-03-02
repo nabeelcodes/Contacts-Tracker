@@ -4,7 +4,7 @@ import { phoneRegExp } from "../data/phoneRegExp";
 import { v4 as uuidv4 } from "uuid";
 import * as Yup from "yup";
 import FormField from "./FormField";
-import { FormCard } from "./";
+import { FormCard, StyledButton } from "./";
 
 const ContactsForm = ({ userData, createUser }) => {
    const [isData, setIsData] = useState();
@@ -21,7 +21,7 @@ const ContactsForm = ({ userData, createUser }) => {
       firstName: Yup.string().min(2, "It's too short").required("Required"),
       lastName: Yup.string().min(2, "It's too short").required("Required"),
       email: Yup.string().lowercase().email("Enter valid email").required("Required"),
-      phoneNumber: Yup.string().matches(phoneRegExp, "Phone number is not valid").required("Required"),
+      phoneNumber: Yup.string().matches(phoneRegExp, "Phone number is not valid").max(10, "Cannot exceed ").required("Required"),
    });
 
    useEffect(() => {
@@ -78,9 +78,9 @@ const ContactsForm = ({ userData, createUser }) => {
                      <FormField type={"email"} variant={"email"} placeholder={"Enter an email"} />
                      <FormField type={"text"} variant={"phoneNumber"} placeholder={"Enter a phone number"} />
 
-                     <button type='submit' disabled={!isValid || isSubmitting}>
+                     <StyledButton primary type='submit' disabled={!isValid || isSubmitting}>
                         Add Contact
-                     </button>
+                     </StyledButton>
                   </Form>
                );
             }}
